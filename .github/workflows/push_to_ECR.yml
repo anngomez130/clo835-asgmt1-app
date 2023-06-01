@@ -30,7 +30,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: mysql
         # tag image based on the commit to have a unique identifier
-        IMAGE_TAG: ${{ github.sha }}
+        IMAGE_TAG: ${{ github.sha | slice(0, 7) }}
       run: |
         # Docker build command
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile_mysql .
@@ -49,7 +49,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: webapp
         # tag image based on the commit to have a unique identifier
-        IMAGE_TAG: ${{ github.sha }}
+        IMAGE_TAG: ${{ github.sha | slice(0, 7) }}
       run: |
         # Docker build command
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile .
