@@ -46,6 +46,9 @@ COLOR = random.choice(["red", "green", "blue", "blue2", "darkblue", "pink", "lim
 
 
 @app.route("/", methods=['GET', 'POST'])
+@app.route("/blue", methods=['GET', 'POST'])
+@app.route("/pink", methods=['GET', 'POST'])
+@app.route("/lime", methods=['GET', 'POST'])
 def home():
     return render_template('addemp.html', color=color_codes[COLOR])
 
